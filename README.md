@@ -1,2 +1,0 @@
-# odds_scraper
-bot
