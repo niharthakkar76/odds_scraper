@@ -31,5 +31,13 @@ jobs:
           
       - name: Run odds scraper
         run: |
-          python odds_new.py
+          # Run the script and redirect output to a log file
+          python odds_new.py > odds_scraper_log.txt 2>&1
         # Using hardcoded credentials directly as requested
+        
+      - name: Upload logs as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: odds-scraper-logs
+          path: odds_scraper_log.txt
+          retention-days: 7
