@@ -1,11 +1,13 @@
 name: Daily Odds Scraper
 
 on:
+  # Allow manual triggering (this should be first for better visibility in GitHub UI)
+  workflow_dispatch:
+  
+  # Run at 8:00 AM Eastern Time (ET) every day
+  # This is 12:00 UTC (8:00 AM ET is UTC-4 during daylight saving time, UTC-5 during standard time)
   schedule:
-    # Run at 8:00 AM Eastern Time (ET) every day
-    # This is 12:00 UTC (8:00 AM ET is UTC-4 during daylight saving time, UTC-5 during standard time)
     - cron: '0 12 * * *'
-  workflow_dispatch:  # Allow manual triggering
 
 jobs:
   scrape_odds:
