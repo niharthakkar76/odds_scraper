@@ -20,10 +20,10 @@ jobs:
     
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: '3.10'
           
@@ -32,15 +32,15 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           
-      - name: Install system dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libdbus-glib-1-2 libnss3 libnspr4 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgbm1 libpango-1.0-0 libcairo2 libasound2
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
           
-      - name: Install Playwright browsers
+      - name: Install Playwright
         run: |
+          npx playwright install-deps firefox
           python -m playwright install firefox
-          python -m playwright install-deps
           
       - name: Run odds scraper
         run: python odds_new.py
