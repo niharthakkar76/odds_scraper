@@ -2,6 +2,7 @@
 import requests
 import sys
 import json
+import time
 from datetime import datetime
 
 def check_workflow_runs(owner, repo, github_token):
