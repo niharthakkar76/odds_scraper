@@ -1,13 +1,7 @@
 name: Simple Test Workflow
 
-on:
-  # Allow manual triggering
-  workflow_dispatch:
-  
-  # Also run on push to main branch
-  push:
-    branches:
-      - main
+# Run on any push to any branch
+on: push
 
 jobs:
   test_job:

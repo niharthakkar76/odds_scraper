@@ -38,7 +38,7 @@ jobs:
         # Using hardcoded credentials directly as requested
         
       - name: Upload logs as artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: odds-scraper-logs
           path: odds_scraper_log.txt
