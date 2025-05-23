@@ -4,6 +4,11 @@ on:
   # Allow manual triggering
   workflow_dispatch:
   
+  # Run on push to main branch
+  push:
+    branches:
+      - main
+      
   # Run at 8:00 AM Eastern Time (ET) every day
   # This is 12:00 UTC (8:00 AM ET is UTC-4 during daylight saving time, UTC-5 during standard time)
   schedule:
