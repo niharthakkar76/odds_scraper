@@ -28,6 +28,18 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+      
+      # Fix for running Firefox in container
+      - name: Setup user for Firefox
+        run: |
+          # Create a new user to run Firefox
+          groupadd -r pwuser && useradd -r -g pwuser -G audio,video pwuser
+          mkdir -p /home/pwuser
+          chown -R pwuser:pwuser /home/pwuser
+          # Make the project directory accessible to pwuser
+          chown -R pwuser:pwuser .
           
       - name: Run odds scraper
-        run: python odds_new.py
+        run: |
+          # Run Firefox as non-root user
+          su pwuser -c 'python odds_new.py'
