@@ -9,10 +9,10 @@ on:
     branches:
       - main
       
-  # Run at 8:00 AM Eastern Time (ET) every day
-  # This is 12:00 UTC (8:00 AM ET is UTC-4 during daylight saving time, UTC-5 during standard time)
+  # Run at 9:00 AM European time (Central European Time) every day
+  # This is 8:00 UTC (9:00 AM CET is UTC+1 during standard time, UTC+2 during summer time)
   schedule:
-    - cron: '0 12 * * *'
+    - cron: '0 8 * * *'
 
 jobs:
   scrape_odds:
