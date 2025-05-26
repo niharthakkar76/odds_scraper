@@ -9,10 +9,13 @@ on:
     branches:
       - main
       
-  # Run at 9:00 AM European time (Central European Time) every day
-  # This is 8:00 UTC (9:00 AM CET is UTC+1 during standard time, UTC+2 during summer time)
+  # Run at 8:00 AM German time every day
+  # Germany uses CET (UTC+1) during standard time and CEST (UTC+2) during summer time
+  # To ensure it's always 8:00 AM German time, we use 6:00 UTC which will be 8:00 AM during summer time
+  # and 7:00 UTC which will be 8:00 AM during standard time
   schedule:
-    - cron: '0 8 * * *'
+    - cron: '0 6 * * *' # 8:00 AM German time during summer (CEST)
+    - cron: '0 7 * * *' # 8:00 AM German time during standard time (CET)
 
 jobs:
   scrape_odds:
